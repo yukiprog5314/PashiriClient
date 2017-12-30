@@ -47,7 +47,7 @@ public class SQLManager {
 	/*
 	 * 依頼DBへのUPDATE,INSERT,DELETE文実行
 	 */
-	public static int userDBUpdte(String query) throws Exception{
+	public static int userDBUpdate(String query) throws Exception{
 		Statement stmt = userConnection.createStatement();
 		return stmt.executeUpdate(query);
 	}

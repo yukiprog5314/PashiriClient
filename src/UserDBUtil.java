@@ -9,13 +9,49 @@ public class UserDBUtil {
 		String query = "INSERT INTO Users(UserID,Name,Password) VALUES('"+userId+"','"+pw+"','"+name+"')";	//SQL�ｿｽ�ｿｽ�ｿｽｶ撰ｿｽ
 		System.out.printf("sql:%s",query);
 		try {
-			int result =SQLManager.userDBUpdte(query);
+			int result =SQLManager.userDBUpdate(query);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;	//クエリ送信失敗
 		}
 		return true;	//ユーザ追加成功
 	}
+
+	/**
+	 * 引数valueの値をuserIdのユーザに追加する
+	 * @param userId
+	 * @param value
+	 * @return 成功->true,失敗->false
+	 */
+	public static boolean addPoint( String userId, int value ) {
+		//get point
+		String query = "SELECT point FROM Users where UserID='"+userId+"'";
+		int point=0;
+		int result=0;
+		try {
+			ResultSet resultSet =SQLManager.userDBQuery(query);
+			if (resultSet.next()) {
+				point=resultSet.getInt("point");
+			}else {
+				return false; //ユーザ名が無い
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;	//クエリ送信失敗
+		}
+		//add point
+		point+=value;
+		query = "UPDATE Users SET point = "+point+" where UserID='"+userId+"'";
+		System.out.printf("%s", query);
+		try {
+			 result =SQLManager.userDBUpdate(query);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;	//クエリ送信失敗
+		}
+		return true;
+	}
+
 
 	/*
 	 * ユーザデータベースへの追加・値取得
@@ -29,7 +65,7 @@ public class UserDBUtil {
 		try {
 			//query1値追加
 			System.out.printf("sql1:%s\n",query1);
-			int result1 =SQLManager.userDBUpdte(query1);
+			int result1 =SQLManager.userDBUpdate(query1);
 
 			//query2値取得
 			System.out.printf("sql2:%s\n",query2);
