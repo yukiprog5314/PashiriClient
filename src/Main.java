@@ -9,7 +9,10 @@ public class Main {
 		//
 		//UserDBUtil.sample();
 		//addPoint()のテスト
-		UserDBUtil.addPoint("pointtest",-10);
+		//UserDBUtil.addPoint("pointtest",-10);
+
+		//setStatus()のテスト
+		RequestDBUtil.setStatus(2,1);
 	}
 
 }
