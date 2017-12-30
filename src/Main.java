@@ -2,11 +2,12 @@
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		SQLManager.launchSQLManager();//SQLƒT[ƒo[‚Æ‚ÌÚ‘±‚ğŠm—§
-		
-		//‚±‚±‚ÅŠeíƒƒ\ƒbƒh‚ğƒeƒXƒg(ˆÈ‰º‚Í—á)
-		UserDBUtil.addUser("5401","password","ABCDE FGHI");
+		SQLManager.launchSQLManager();//SQLï¿½Tï¿½[ï¿½oï¿½[ï¿½Æ‚ÌÚ‘ï¿½ï¿½ï¿½ï¿½mï¿½ï¿½
+
+		//ã“ã“ã§å„ç¨®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ãƒ†ã‚¹ãƒˆ(ä»¥ä¸‹ã¯ä¾‹)
+		//UserDBUtil.addUser("5401","name1","name1");
 		//
+		UserDBUtil.sample();
 	}
 
 }
