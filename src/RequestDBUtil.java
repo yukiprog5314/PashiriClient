@@ -19,4 +19,29 @@ public class RequestDBUtil {
 		return true;
 	}
 
+	public static int[] getAllRequest() {
+		int [] requestIDs;
+		int i=0;
+		String query = "SELECT RequestID from Requests";
+		try {
+			System.out.println(query);
+			ResultSet resultSet =SQLManager.requestDBQuery(query);
+			resultSet.last();
+			int number_of_tables = resultSet.getRow();
+			resultSet.beforeFirst();
+			requestIDs = new int[number_of_tables];
+			while(resultSet.next()){
+				requestIDs[i]=resultSet.getInt("RequestID");
+				i++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			requestIDs = new int[1];
+			requestIDs[0] =-1;
+			return (requestIDs);	//クエリ送信失敗
+		}
+		return (requestIDs);
+	}
+
+
 }

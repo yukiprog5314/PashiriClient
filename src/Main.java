@@ -12,7 +12,12 @@ public class Main {
 		//UserDBUtil.addPoint("pointtest",-10);
 
 		//setStatus()のテスト
-		RequestDBUtil.setStatus(2,1);
+		//RequestDBUtil.setStatus(2,1);
+		//getAllRequest()のテスト
+		int [] requestIDs=RequestDBUtil.getAllRequest();
+		for (int requestID : requestIDs){
+		      System.out.println(requestID);
+		}
 	}
 
 }
