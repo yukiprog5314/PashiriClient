@@ -1,19 +1,101 @@
 import java.sql.ResultSet;
 
 public class UserDBUtil {
-	
+
 	/*
-	 * ƒ†[ƒUƒf[ƒ^ƒx[ƒX‚Éƒ†[ƒU‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh(Ql’ö“x‚É)
+	 * ãƒ¦ãƒ¼ã‚¶ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ãƒ¦ãƒ¼ã‚¶ã‚’è¿½åŠ ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰(å‚è€ƒç¨‹åº¦ã«)
 	 */
 	public static boolean addUser(String userId, String pw, String name) {
-		String query = "INSERT INTO table1 VALUES('"+userId+"','"+pw+"','"+name+"')";	//SQL•¶‚ğ¶¬
+		String query = "INSERT INTO Users(UserID,Name,Password) VALUES('"+userId+"','"+pw+"','"+name+"')";	//SQLï¿½ï½¿ï½½ï¿½ï½¿ï½½ï¿½ï½¿ï½½îï½¶æ’°ï½¿ï½½
+		System.out.printf("sql:%s",query);
 		try {
-			ResultSet resultSet = SQLManager.userDBQuery(query);	//SQLManager‚Ìƒƒ\ƒbƒh‚ğ—p‚¢‚ÄƒNƒGƒŠ‚ğ”ò‚Î‚·(‚±‚Ìê‡‚Íƒ†[ƒUƒf[ƒ^ƒx[ƒX‚É)
+			int result =SQLManager.userDBUpdate(query);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;	//ƒNƒGƒŠ‘—M¸”s
+			return false;	//ã‚¯ã‚¨ãƒªé€ä¿¡å¤±æ•—
 		}
-		return true;	//ƒ†[ƒU’Ç‰Á¬Œ÷
+		return true;	//ãƒ¦ãƒ¼ã‚¶è¿½åŠ æˆåŠŸ
+	}
+
+	/**
+	 * å¼•æ•°valueã®å€¤ã‚’userIdã®ãƒ¦ãƒ¼ã‚¶ã«è¿½åŠ ã™ã‚‹
+	 * @param userId
+	 * @param value
+	 * @return æˆåŠŸ->true,å¤±æ•—->false
+	 */
+	public static boolean addPoint( String userId, int value ) {
+		//get point
+		String query = "SELECT point FROM Users where UserID='"+userId+"'";
+		int point=0;
+		int result=0;
+		try {
+			ResultSet resultSet =SQLManager.userDBQuery(query);
+			if (resultSet.next()) {
+				point=resultSet.getInt("point");
+			}else {
+				return false; //ãƒ¦ãƒ¼ã‚¶åãŒç„¡ã„
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;	//ã‚¯ã‚¨ãƒªé€ä¿¡å¤±æ•—
+		}
+		//add point
+		point+=value;
+		query = "UPDATE Users SET point = "+point+" where UserID='"+userId+"'";
+		System.out.printf("%s", query);
+		try {
+			 result =SQLManager.userDBUpdate(query);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;	//ã‚¯ã‚¨ãƒªé€ä¿¡å¤±æ•—
+		}
+		return true;
+	}
+
+
+	/*
+	 * ãƒ¦ãƒ¼ã‚¶ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®è¿½åŠ ãƒ»å€¤å–å¾—
+	 * ä¾é ¼ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®è¿½åŠ ãƒ»å€¤å–å¾—
+	 */
+	public static boolean sample() {
+		String query1 = "INSERT INTO Users(UserID,Name,Password) VALUES('testUserID','testName','testPassword')";
+		String query2 = "SELECT * FROM Users";
+		String query3 = "INSERT INTO Requests VALUES('1','testName','testClientID','testContractorID',0,0,'test',0,'2017-12-30 15:25:07')";
+		String query4 = "SELECT * FROM Requests";
+		try {
+			//query1å€¤è¿½åŠ 
+			System.out.printf("sql1:%s\n",query1);
+			int result1 =SQLManager.userDBUpdate(query1);
+
+			//query2å€¤å–å¾—
+			System.out.printf("sql2:%s\n",query2);
+			ResultSet resultSet2 =SQLManager.userDBQuery(query2);
+			System.out.printf("UserDB,Users table\n"
+					+ "UserID\t\tName\t\tPassword\n");
+			while(resultSet2.next()){
+				System.out.printf("%s\t%s\t%s\n",resultSet2.getString("UserID"),resultSet2.getString("Name"),resultSet2.getString("Password"));
+			}
+
+			//query3å€¤è¿½åŠ 
+			System.out.printf("sql3:%s\n",query3);
+			int result3 =SQLManager.requestDBUpdate(query3);
+
+			//query4å€¤å–å¾—
+			System.out.printf("sql4:%s\n",query4);
+			ResultSet resultSet4 =SQLManager.requestDBQuery(query4);
+			System.out.printf("requestDB, Requests table\n"
+					+ "RequestID\tName\t\tClientID\tContractorID\t\tPoint\tAdvancePoint\tDetails\tStatus\tDeadline\n");
+			while(resultSet4.next()){
+				System.out.printf("%d\t\t%s\t%s\t%s\t%d\t%d\t\t%s\t%d\t%s\n",resultSet4.getInt("RequestID"),resultSet4.getString("Name"),resultSet4.getString("ClientID"),resultSet4.getString("ContractorID"),resultSet4.getInt("Point"),resultSet4.getInt("AdvancePoint"),resultSet4.getString("Details"),resultSet4.getInt("Status"),resultSet4.getString("Deadline"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;	//ã‚¯ã‚¨ãƒªé€ä¿¡å¤±æ•—
+		}
+
+		return true;	//ãƒ¦ãƒ¼ã‚¶è¿½åŠ æˆåŠŸ
 	}
 
 }
+
+
