@@ -9,7 +9,15 @@ public class Main {
 		//
 		//UserDBUtil.sample();
 		//addPoint()のテスト
-		UserDBUtil.addPoint("pointtest",-10);
+		//UserDBUtil.addPoint("pointtest",-10);
+
+		//setStatus()のテスト
+		//RequestDBUtil.setStatus(2,1);
+		//getAllRequest()のテスト
+		int [] requestIDs=RequestDBUtil.getAllRequest();
+		for (int requestID : requestIDs){
+		      System.out.println(requestID);
+		}
 	}
 
 }

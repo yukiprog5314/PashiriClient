@@ -42,7 +42,6 @@ public class UserDBUtil {
 		//add point
 		point+=value;
 		query = "UPDATE Users SET point = "+point+" where UserID='"+userId+"'";
-		System.out.printf("%s", query);
 		try {
 			 result =SQLManager.userDBUpdate(query);
 		} catch (Exception e) {
