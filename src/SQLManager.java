@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class SQLManager {
 
-	private static final String serverName = "ec2-52-14-126-140.us-east-2.compute.amazonaws.com";
+	private static final String serverName = "18.218.107.147";
 	private static final String userName = "root";
 	private static final String userPassword = "root";
 	private static final String requestDBName = "requestDB";

@@ -3,19 +3,45 @@ import java.sql.ResultSet;
 public class UserDBUtil {
 
 	/*
-	 * ユーザデータベースにユーザを追加するメソッド(参考程度に)
+	 * ユーザの追加
 	 */
-	public static boolean addUser(String userId, String pw, String name) {
-		String query = "INSERT INTO Users(UserID,Name,Password) VALUES('"+userId+"','"+pw+"','"+name+"')";	//SQL�ｿｽ�ｿｽ�ｿｽｶ撰ｿｽ
-		System.out.printf("sql:%s",query);
-		try {
-			int result =SQLManager.userDBUpdate(query);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;	//クエリ送信失敗
+	public static boolean addUser( String userId, String pw, String name ){
+		   String query = "INSERT INTO Users(UserID,Name,Password) VALUES('"+userId+"','"+pw+"','"+name+"')";
+		   // System.out.printf("sql:%s",query);
+		   try {
+		       int result =SQLManager.userDBUpdate(query);
+		   } catch (Exception e) {
+		       e.printStackTrace();
+		       return false;  //クエリ送信失敗
+		   }
+		   return true;   //ユーザ追加成功
 		}
-		return true;	//ユーザ追加成功
+
+
+	/*
+	 * ユーザの削除
+	 */
+
+	public static boolean removeUser( String userId ) {
+	   String query = "delete from Users where UserID = '" +userId+"'";
+	   //System.out.printf("sql:%s",query);
+	   try {
+	       int result = SQLManager.userDBUpdate(query);
+	       /*
+	       if (resultSet.next()) {
+	           ResultSet resultSet =SQLManager.userDBQuery(query);
+	       }else {
+	           return false;
+	       }
+	       */
+
+	       } catch (Exception e){
+	           e.printStackTrace();
+	           return false;  //クエリ送信失敗
+	       }
+	       return true;   //成功
 	}
+
 
 	/**
 	 * 引数valueの値をuserIdのユーザに追加する
@@ -52,7 +78,11 @@ public class UserDBUtil {
 	}
 
 
+
+
+
 	/*
+	 * sample
 	 * ユーザデータベースへの追加・値取得
 	 * 依頼データベースへの追加・値取得
 	 */
