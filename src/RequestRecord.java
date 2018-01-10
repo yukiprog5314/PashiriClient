@@ -2,21 +2,130 @@
 
 import java.util.Date;
 /**
- * <p>UserƒNƒ‰ƒX‚ÍA‚»‚ê‚¼‚ê‚Ìƒ†[ƒU[‚Ìî•ñ‚ğƒCƒ“ƒXƒ^ƒ“ƒX‚É•Û‚·‚éB</p>
+ * <p>Userã‚¯ãƒ©ã‚¹ã¯ã€ãã‚Œãã‚Œã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®æƒ…å ±ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ä¿æŒã™ã‚‹ã€‚</p>
  * 
- * @author 5415 “y“c —Y‹P
+ * @author 5415 åœŸç”° é›„è¼ & 5422 å’Œç”°
  *
  */
 public class RequestRecord {
 	
-	private int requestID;		///ˆË—ŠID
-	private String name;		///ˆË—Š–¼
-	private int clientID;		///”­’ÒID
-	private int contractorID;	///ó’ÒID
-	private int point;			///ƒ|ƒCƒ“ƒg
-	private int advancePoint;	///‘O‹à
-	private String detail;		///“à—e
-	private int status;			///ó‘Ô
-	private java.util.Date deadline;		///ŠúŒÀ
+	private int requestID;		///ä¾é ¼ID
+	private String name;		///ä¾é ¼å
+	private String clientID;		///ç™ºæ³¨è€…ID
+	private String clientName;
+	private String contractorID;	///å—æ³¨è€…ID
+	private String contractorName;
+	private int point;			///ãƒã‚¤ãƒ³ãƒˆ
+	private int advancePoint;	///å‰é‡‘
+	private String detail;		///å†…å®¹
+	private int status;			///çŠ¶æ…‹
+	private java.util.Date deadline;		///æœŸé™
+	
+	//ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	public RequestRecord(){
+		this.requestID = 0;
+		this.name = null;
+		this.clientID = "0";
+		this.clientName = null;
+		this.contractorID = "-1";
+		this.contractorName = null;
+		this.point = 0;
+		this.advancePoint = 0;
+		this.detail = null;
+		this.status = 0;
+		this.deadline = null;
+	}
 
+	
+	
+	// Matono tukure1
+		/*public java.util.Date setDeadline(){
+			
+			
+		}
+
+		public java.util.Date getDeadline(){
+			return deadline;
+		}
+		*/
+
+		public void setRequestId(int reqId){
+			this.requestID = reqId;
+		}
+
+		public int getRequestId(){
+			return requestID;
+		}
+
+		public void setName(String name){
+			this.name = name;
+		}
+
+		public String getName(){
+			return name;
+		}
+
+		public void setClientId(String clientId){
+			this.clientID = clientId;
+		}
+
+		public String getClientId(){
+			return clientID;
+		}
+		
+		public void setClientName(String clientName){
+			this.clientName = clientName;
+		}
+
+		public String getClientName(){
+			return clientName;
+		}
+
+		public void setContractorId(String contractorId){
+			this.contractorID = contractorId;
+		}
+
+		public String getContractorId(){
+			return contractorID;
+		}
+		
+		public void setContractorName(String contractorName){
+			this.contractorName = contractorName;
+		}
+
+		public String getContractorName(){
+			return contractorName;
+		}
+
+		public void setPoint(int point){
+			this.point = point;
+		}
+
+		public int getPoint(){
+			return point;
+		}
+
+		public void setAdpoint(int adpoint){
+			this.advancePoint = adpoint;
+		}
+
+		public int getAdpoint(){
+			return advancePoint;
+		}
+
+		public void setDetails(String details){
+			this.detail = details;
+		}
+
+		public String getDetails(){
+			return detail;
+		}
+
+		public void setStatus(int status){
+			this.status = status;
+		}
+
+		public int getStatus(){
+			return status;
+		}
 }
