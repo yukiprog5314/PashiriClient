@@ -66,13 +66,27 @@ public class Main {
 		      System.out.println(requestID);
 		}
 		*/
-
-
+		
+		//setContractorID()のテスト(受注者の設定)
+		//public static boolean setContractorID( int requestId, String contractorID )
 		/*
-		 * sample
-		 * DBへ接続するためのサンプルプログラム
-		 */
-		//UserDBUtil.sample();
+		boolean result=RequestDBUtil.setContractorID(1,"pointtest");
+		System.out.print(result);
+		*/
+		
+		//setRequestName()のテスト(依頼名の設定)
+		//public static boolean setRequestName( int requestId, String name )
+		/*
+		boolean result=RequestDBUtil.setRequestName(1,"ジュース買ってきて");
+		System.out.print(result);
+		*/
+
+		
+		//sample
+		//DBへ接続するためのサンプルプログラム
+		/* 
+		UserDBUtil.sample();
+		*/
 
 	}
 

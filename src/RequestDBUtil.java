@@ -20,23 +20,20 @@ public class RequestDBUtil {
 		return true;
 	}
 
-
 	/*
 	 * 内容の設定
 	 */
 	public static boolean setDetails( int requestId, String details ){
-	    String query = "UPDATE Requests SET Details = "+details+" where RequestID='"+requestId+"'";
-	    System.out.println( query );
-	    try {
-				 int result =SQLManager.requestDBUpdate(query);
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;	//クエリ送信失敗
-			}
-			return true;
-	}
-
-
+    	String query = "UPDATE Requests SET Details = '"+details+"' where RequestID='"+requestId+"'";
+   		//System.out.printf("sql:%s",query);
+    	try {
+   			  int result =SQLManager.requestDBUpdate(query);
+   		 } catch (Exception e) {
+   			 e.printStackTrace();
+   			 return false;
+   		 }
+   		 return true;
+    }
 
 	/*
 	 * 依頼の締切日時の追加
@@ -73,7 +70,9 @@ public class RequestDBUtil {
 	}
 
 
-
+	/*
+	 * 全依頼の取得
+	 */
 	public static int[] getAllRequest() {
 		int [] requestIDs;
 		int i=0;
@@ -96,6 +95,36 @@ public class RequestDBUtil {
 			return (requestIDs);	//クエリ送信失敗
 		}
 		return (requestIDs);
+	}
+	
+	/*
+	 * 受注者の設定
+	 */
+	public static boolean setContractorID( int requestId, String contractorID ) {
+		String query = "UPDATE Requests SET ContractorID = '" + contractorID + "' WHERE RequestID = " + requestId;	//SQL文を生成
+		//System.out.println( query );
+		try {
+			SQLManager.requestDBUpdate( query );	//SQLManagerのメソッドを用いてクエリを飛ばす(この場合は依頼データベースに)
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false; //クエリ送信失敗
+		}
+		return true;
+	}
+	
+	/*
+	 * 依頼名の設定
+	 */	
+	public static boolean setRequestName( int requestId, String name ) {
+		String query = "UPDATE Requests SET Name = '" + name + "' WHERE RequestID = " + requestId;	//SQL文を生成
+		System.out.println( query );
+		try {
+			SQLManager.requestDBUpdate( query );	//SQLManagerのメソッドを用いてクエリを飛ばす(この場合は依頼データベースに)
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false; //クエリ送信失敗
+		}
+		return true;
 	}
 
 
