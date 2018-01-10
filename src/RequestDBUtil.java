@@ -69,34 +69,6 @@ public class RequestDBUtil {
 		return true;
 	}
 
-
-	/*
-	 * 全依頼の取得
-	 */
-	public static int[] getAllRequest() {
-		int [] requestIDs;
-		int i=0;
-		String query = "SELECT RequestID from Requests";
-		try {
-			System.out.println(query);
-			ResultSet resultSet =SQLManager.requestDBQuery(query);
-			resultSet.last();
-			int number_of_tables = resultSet.getRow();
-			resultSet.beforeFirst();
-			requestIDs = new int[number_of_tables];
-			while(resultSet.next()){
-				requestIDs[i]=resultSet.getInt("RequestID");
-				i++;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			requestIDs = new int[1];
-			requestIDs[0] =-1;
-			return (requestIDs);	//クエリ送信失敗
-		}
-		return (requestIDs);
-	}
-	
 	/*
 	 * 受注者の設定
 	 */
@@ -111,10 +83,10 @@ public class RequestDBUtil {
 		}
 		return true;
 	}
-	
+
 	/*
 	 * 依頼名の設定
-	 */	
+	 */
 	public static boolean setRequestName( int requestId, String name ) {
 		String query = "UPDATE Requests SET Name = '" + name + "' WHERE RequestID = " + requestId;	//SQL文を生成
 		System.out.println( query );
@@ -126,6 +98,52 @@ public class RequestDBUtil {
 		}
 		return true;
 	}
+	/*
+	 * 依頼の取得(引数で返り値変化)
+	 */
+	public static Pair<Integer,String>[] getRequests( String clientUserId, String contractorUserId, int status){
+		int i=0,flag=0;
+		Pair<Integer,String> result_pairs[];
 
+		String query = "SELECT RequestID,Name from Requests";
+		if (clientUserId!=null) {
+			query+=(flag==0)? " where " : " OR ";
+			query+=" ClientID='"+clientUserId+"'";
+			flag=1;
+		}
+		if (contractorUserId!=null) {
+			query+=(flag==0)? " where " : " OR ";
+			query+=" ContractorID='"+contractorUserId+"'";
+			flag=1;
+		}
+		if (status!=-1) {
+			query+=(flag==0)? " where " : " OR ";
+			query+=" status="+status;
+			flag=1;
+		}
+		//System.out.println(query);
+
+		try {
+			ResultSet resultSet =SQLManager.requestDBQuery(query);
+			resultSet.last();
+			result_pairs = new Pair[resultSet.getRow()];
+			resultSet.beforeFirst();
+
+			while(resultSet.next()){
+				Pair<Integer,String> instsnce = new Pair<Integer, String>(resultSet.getInt("RequestID"),resultSet.getString("Name"));
+				result_pairs[i]=instsnce;
+				i++;
+			}
+			return (result_pairs);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Pair<Integer,String> instsnce = new Pair<Integer, String>(-1,null);
+			result_pairs = new Pair[1];
+			result_pairs[0]=instsnce;
+			return (result_pairs);	//クエリ送信失敗
+
+		}
+
+	}
 
 }
