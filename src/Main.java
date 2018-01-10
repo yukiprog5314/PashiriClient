@@ -1,6 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class Main {
 
 	public static void main(String[] args) throws Exception {
@@ -58,22 +59,13 @@ public class Main {
 		System.out.print(result);
 		*/
 
-		//getAllRequest()のテスト(全依頼取得)
-		//public static int[] getAllRequest() {
-		/*
-		int [] requestIDs=RequestDBUtil.getAllRequest();
-		for (int requestID : requestIDs){
-		      System.out.println(requestID);
-		}
-		*/
-		
 		//setContractorID()のテスト(受注者の設定)
 		//public static boolean setContractorID( int requestId, String contractorID )
 		/*
 		boolean result=RequestDBUtil.setContractorID(1,"pointtest");
 		System.out.print(result);
 		*/
-		
+
 		//setRequestName()のテスト(依頼名の設定)
 		//public static boolean setRequestName( int requestId, String name )
 		/*
@@ -81,10 +73,18 @@ public class Main {
 		System.out.print(result);
 		*/
 
-		
+		//getRequests()のテスト(依頼の取得(引数で返り値変化))
+		//public static Pair[] getRequests( String clientUserId, String contractorUserId, int status)
+		/*
+		Pair[] rezults=RequestDBUtil.getRequests("testUserID","pointtest",1);
+		for (Pair rezult: rezults){
+		      System.out.printf("%s,%s\n",rezult.first,rezult.second);
+		}
+		*/
+
 		//sample
 		//DBへ接続するためのサンプルプログラム
-		/* 
+		/*
 		UserDBUtil.sample();
 		*/
 
