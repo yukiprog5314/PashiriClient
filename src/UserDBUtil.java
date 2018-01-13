@@ -44,7 +44,8 @@ public class UserDBUtil {
 
 
 	/**
-	 * 引数valueの値をuserIdのユーザに追加する
+	 * <p>引数valueのポイントをuserIdのユーザに追加する</p>
+	 * @author 5409 坂本 雄一朗
 	 * @param userId
 	 * @param value
 	 * @return 成功->true,失敗->false

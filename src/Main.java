@@ -1,5 +1,7 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 
 public class Main {
@@ -59,6 +61,24 @@ public class Main {
 		System.out.print(result);
 		*/
 
+		//getRequest()のテスト(依頼の取得)
+		//public static RequestRecord getRequest( int requestId ) {
+		/*
+		RequestRecord result = RequestDBUtil.getRequest(1);
+		System.out.printf("requestID:%d\n",result.getRequestId());
+		System.out.printf("name:%s\n",result.getName());
+		System.out.printf("clientID:%s\n",result.getClientId());
+		System.out.printf("clientName:%s\n",result.getClientName());
+		System.out.printf("contractorID:%s\n",result.getContractorId());
+		System.out.printf("contractorName:%s\n",result.getContractorName());
+		System.out.printf("point:%d\n",result.getPoint());
+		System.out.printf("advancePoint:%d\n",result.getAdpoint());
+		System.out.printf("details:%s\n",result.getDetails());
+		System.out.printf("status:%d\n",result.getStatus());
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.printf("deadline:%s\n",sdFormat.format(result.getDeadline()));
+		*/
+
 		//setContractorID()のテスト(受注者の設定)
 		//public static boolean setContractorID( int requestId, String contractorID )
 		/*
@@ -75,12 +95,12 @@ public class Main {
 
 		//getRequests()のテスト(依頼の取得(引数で返り値変化))
 		//public static Pair[] getRequests( String clientUserId, String contractorUserId, int status)
-		/*
-		Pair[] rezults=RequestDBUtil.getRequests("testUserID","pointtest",1);
+
+		Pair[] rezults=RequestDBUtil.getRequests("testUserIDs","pointtests",10);
 		for (Pair rezult: rezults){
 		      System.out.printf("%s,%s\n",rezult.first,rezult.second);
 		}
-		*/
+
 
 		//sample
 		//DBへ接続するためのサンプルプログラム
@@ -88,6 +108,19 @@ public class Main {
 		UserDBUtil.sample();
 		*/
 
+
+		/*
+		 * Request
+		 */
+		//getMyOrdered()のテスト
+		//public static ArrayList<RequestRecord> getMyOrdered(String userId) {
+		/*
+		System.out.print("ユーザーidを入力:");
+		Scanner sc = new Scanner(System.in);
+		String userId = sc.next();
+		Request.getMyOrdered(userId);
+		sc.close();
+		*/
 	}
 
 }
