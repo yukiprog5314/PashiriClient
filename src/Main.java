@@ -63,8 +63,8 @@ public class Main {
 
 		//getRequest()のテスト(依頼の取得)
 		//public static RequestRecord getRequest( int requestId ) {
-		/*
-		RequestRecord result = RequestDBUtil.getRequest(1);
+
+		RequestRecord result = RequestDBUtil.getRequest(10);
 		System.out.printf("requestID:%d\n",result.getRequestId());
 		System.out.printf("name:%s\n",result.getName());
 		System.out.printf("clientID:%s\n",result.getClientId());
@@ -77,7 +77,7 @@ public class Main {
 		System.out.printf("status:%d\n",result.getStatus());
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		System.out.printf("deadline:%s\n",sdFormat.format(result.getDeadline()));
-		*/
+
 
 		//setContractorID()のテスト(受注者の設定)
 		//public static boolean setContractorID( int requestId, String contractorID )
@@ -95,12 +95,12 @@ public class Main {
 
 		//getRequests()のテスト(依頼の取得(引数で返り値変化))
 		//public static Pair[] getRequests( String clientUserId, String contractorUserId, int status)
-
+		/*
 		Pair[] rezults=RequestDBUtil.getRequests("testUserIDs","pointtests",10);
 		for (Pair rezult: rezults){
 		      System.out.printf("%s,%s\n",rezult.first,rezult.second);
 		}
-
+		*/
 
 		//sample
 		//DBへ接続するためのサンプルプログラム

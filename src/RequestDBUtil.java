@@ -82,19 +82,26 @@ public class RequestDBUtil {
 		RequestRecord rr = new RequestRecord();
 		try {
 			ResultSet rs = SQLManager.requestDBQuery(query);
-			while(rs.next()) {
-			rr.setRequestId(rs.getInt("RequestID"));
-			rr.setName(rs.getString("Name"));
-			rr.setClientId(rs.getString("ClientID"));
-			rr.setContractorId(rs.getString("ContractorID"));
-			rr.setPoint(rs.getInt("Point"));
-			rr.setAdpoint(rs.getInt("AdvancePoint"));
-			rr.setDetails(rs.getString("Details"));
-			rr.setStatus(rs.getInt("Status"));
-			String sdline = rs.getString("Deadline");
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date dline = sdf.parse(sdline);
-			rr.setDeadline(dline);
+			if(rs.next()) {
+				rs.previous();
+				while(rs.next()) {
+					rr.setRequestId(rs.getInt("RequestID"));
+					rr.setName(rs.getString("Name"));
+					rr.setClientId(rs.getString("ClientID"));
+					rr.setContractorId(rs.getString("ContractorID"));
+					rr.setPoint(rs.getInt("Point"));
+					rr.setAdpoint(rs.getInt("AdvancePoint"));
+					rr.setDetails(rs.getString("Details"));
+					rr.setStatus(rs.getInt("Status"));
+					String sdline = rs.getString("Deadline");
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					java.util.Date dline = sdf.parse(sdline);
+					rr.setDeadline(dline);
+				}
+			}
+			else {
+				rr.setRequestId(-1);
+				return rr;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -102,6 +109,7 @@ public class RequestDBUtil {
 		}
 		return rr;
 	}
+
 
 
 	/*
