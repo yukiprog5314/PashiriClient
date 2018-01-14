@@ -1,14 +1,16 @@
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * <p>Userクラスは、それぞれのユーザーの情報をインスタンスに保持する。</p>
- * 
+ *
  * @author 5415 土田 雄輝 & 5422 和田
  *
  */
 public class RequestRecord {
-	
+
 	private int requestID;		///依頼ID
 	private String name;		///依頼名
 	private String clientID;		///発注者ID
@@ -20,7 +22,7 @@ public class RequestRecord {
 	private String detail;		///内容
 	private int status;			///状態
 	private java.util.Date deadline;		///期限
-	
+
 	//コンストラクタ
 	public RequestRecord(){
 		this.requestID = 0;
@@ -36,18 +38,17 @@ public class RequestRecord {
 		this.deadline = null;
 	}
 
-	
-	
+
+
 	// Matono tukure1
-		/*public java.util.Date setDeadline(){
-			
-			
+		public void setDeadline(Date dline){
+			this.deadline =dline;
 		}
 
 		public java.util.Date getDeadline(){
 			return deadline;
 		}
-		*/
+
 
 		public void setRequestId(int reqId){
 			this.requestID = reqId;
@@ -72,7 +73,7 @@ public class RequestRecord {
 		public String getClientId(){
 			return clientID;
 		}
-		
+
 		public void setClientName(String clientName){
 			this.clientName = clientName;
 		}
@@ -88,7 +89,7 @@ public class RequestRecord {
 		public String getContractorId(){
 			return contractorID;
 		}
-		
+
 		public void setContractorName(String contractorName){
 			this.contractorName = contractorName;
 		}
