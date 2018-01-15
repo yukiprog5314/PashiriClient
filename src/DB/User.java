@@ -1,3 +1,4 @@
+package DB;
 import java.util.List;
 /**
  * <p>Userクラスは、それぞれのユーザーの情報をインスタンスに保持する。</p>

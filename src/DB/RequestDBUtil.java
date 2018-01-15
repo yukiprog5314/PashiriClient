@@ -1,3 +1,4 @@
+package DB;
 
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -205,5 +206,19 @@ public class RequestDBUtil {
 
 		}
 	}
+	
 
+	/*
+	 * 依頼の追加(未完成)
+	 */
+	public static RequestRecord addRequest( String requestName, int point , int advancePoint, String details, Date deadline  ){
+		return new RequestRecord();
+	}
+	
+	/*
+	 * 依頼の削除(未完成)
+	 */
+	public static boolean removeRequest( int requestId ){
+		return true;
+	}
 }

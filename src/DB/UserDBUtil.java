@@ -1,3 +1,4 @@
+package DB;
 import java.sql.ResultSet;
 
 public class UserDBUtil {
@@ -145,6 +146,21 @@ public class UserDBUtil {
 		}
 		return (userIDs);
 	}
+	
+	/*
+	 * ログイン認証メソッド(未完成)
+	 */
+	public static User login( String userId, String pw ){
+		return new User("taro jiro",userId,0);
+	}
+	
+	/*
+	 * ユーザインスタンスの取得(未完成)
+	 */
+	public static User getUser( String userId ){
+		return new User("jiro taro 2",userId,0);
+	}
+	
 
 
 }
