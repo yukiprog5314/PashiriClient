@@ -41,7 +41,7 @@ public class RequestRecord {
 
 
 
-	// Matono tukure1
+	// Matono arigato
 		public void setDeadline(Date dline){
 			this.deadline =dline;
 		}
