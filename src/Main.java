@@ -16,8 +16,16 @@ public class Main {
 	 */
 	public static void main(String[] args) throws Exception {
 		SQLManager.launchSQLManager();//SQLサーバーとの接続を確立
+		
+		/*
+		 * 以下にコードを書く
+		 */
+		
+		DBtest();///DB班のテスト用メソッド
+	}
+	
+	public static void DBtest(){
 		//ここで各種メソッドをテスト
-
 		/*
 		 * UserDBUtil
 		 */
