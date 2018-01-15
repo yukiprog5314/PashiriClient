@@ -27,13 +27,6 @@ public class UserDBUtil {
 	   //System.out.printf("sql:%s",query);
 	   try {
 	       int result = SQLManager.userDBUpdate(query);
-	       /*
-	       if (resultSet.next()) {
-	           ResultSet resultSet =SQLManager.userDBQuery(query);
-	       }else {
-	           return false;
-	       }
-	       */
 
 	       } catch (Exception e){
 	           e.printStackTrace();
@@ -48,7 +41,7 @@ public class UserDBUtil {
 	 * @author 5409 坂本 雄一朗
 	 * @param userId
 	 * @param value
-	 * @return 成功->true,失敗->false
+	 * @return 成功:true,失敗:false
 	 */
 	public static boolean addPoint( String userId, int value ) {
 		//get point

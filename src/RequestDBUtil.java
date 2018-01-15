@@ -3,7 +3,11 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+/**
+ * <p>requestDB(依頼データベース)を操作するためのクラス</p>
+ * @author 5414 土田
+ *
+ */
 public class RequestDBUtil {
 
 	/**
@@ -11,7 +15,7 @@ public class RequestDBUtil {
 	 * @author 5409 坂本 雄一朗
 	 * @param requestId
 	 * @param value
-	 * @return 成功->true,失敗->false
+	 * @return 成功:true,失敗:false
 	 */
 	public static boolean setStatus( int requestId, int value ){
 		String query = "UPDATE Requests SET Status = "+value+" where RequestID='"+requestId+"'";
