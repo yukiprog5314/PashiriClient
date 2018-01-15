@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * <p>Userクラスは、それぞれのユーザーの情報をインスタンスに保持する。</p>
  *
- * @author 5415 土田 雄輝 & 5422 和田
+ * @author 5415 土田 雄輝 , 5422 和田
  *
  */
 public class RequestRecord {

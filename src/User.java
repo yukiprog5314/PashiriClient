@@ -1,23 +1,21 @@
-
-
 import java.util.List;
 /**
- * <p>UserƒNƒ‰ƒX‚ÍA‚»‚ê‚¼‚ê‚Ìƒ†[ƒU[‚Ìî•ñ‚ğƒCƒ“ƒXƒ^ƒ“ƒX‚É•Û‚·‚éB</p>
- * 
- * @author 5415 “y“c —Y‹P
+ * <p>Userã‚¯ãƒ©ã‚¹ã¯ã€ãã‚Œãã‚Œã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®æƒ…å ±ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ä¿æŒã™ã‚‹ã€‚</p>
+ *
+ * @author 5415 åœŸç”° é›„è¼
  *
  */
 public class User {
-	
+
 	private String name;
 	private String userID;
 	private int points;
-	
+
 	/**
-	 * UserƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚µ‚Ü‚·B
-	 * @param name ƒ†[ƒU‚Ì–¼‘O
-	 * @param userID ƒ†[ƒU‚ÌID
-	 * @param points ƒ†[ƒU‚Ìƒ|ƒCƒ“ƒg
+	 * Userã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚
+	 * @param name ãƒ¦ãƒ¼ã‚¶ã®åå‰
+	 * @param userID ãƒ¦ãƒ¼ã‚¶ã®ID
+	 * @param points ãƒ¦ãƒ¼ã‚¶ã®ãƒã‚¤ãƒ³ãƒˆ
 	 */
 	public User(String name, String userID, int points){
 		this.name = name;

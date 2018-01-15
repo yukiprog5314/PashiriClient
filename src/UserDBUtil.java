@@ -27,13 +27,6 @@ public class UserDBUtil {
 	   //System.out.printf("sql:%s",query);
 	   try {
 	       int result = SQLManager.userDBUpdate(query);
-	       /*
-	       if (resultSet.next()) {
-	           ResultSet resultSet =SQLManager.userDBQuery(query);
-	       }else {
-	           return false;
-	       }
-	       */
 
 	       } catch (Exception e){
 	           e.printStackTrace();
@@ -48,7 +41,7 @@ public class UserDBUtil {
 	 * @author 5409 坂本 雄一朗
 	 * @param userId
 	 * @param value
-	 * @return 成功->true,失敗->false
+	 * @return 成功:true,失敗:false
 	 */
 	public static boolean addPoint( String userId, int value ) {
 		//get point
@@ -125,6 +118,34 @@ public class UserDBUtil {
 
 		return true;	//ユーザ追加成功
 	}
+	/**
+	 * <p>全ユーザIDを返すメソッド</p>
+	 * @author 5415 土田 雄輝
+	 * @return 全ユーザIDが格納されたString配列、失敗した場合はnull
+	 */
+	
+	public static String[] getAllUserID() {
+		String[] userIDs;
+		int i=0;
+		String query = "SELECT UserID from Users";
+		try {
+			System.out.println(query);
+			ResultSet resultSet =SQLManager.userDBQuery(query);
+			resultSet.last();
+			int number_of_tables = resultSet.getRow();
+			resultSet.beforeFirst();
+			userIDs = new String[number_of_tables];
+			while(resultSet.next()){
+				userIDs[i]=resultSet.getString("UserID");
+				i++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return (userIDs);
+	}
+
 
 }
 

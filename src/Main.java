@@ -5,7 +5,12 @@ import java.util.Scanner;
 
 
 public class Main {
-
+	/**
+	 * <p>Mainメソッド。現在はテスト用、使用方法の説明用として使用</p>
+	 * @author 5414 土田,5409 坂本 雄一朗
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		SQLManager.launchSQLManager();//SQLサーバーとの接続を確立
 		//ここで各種メソッドをテスト
@@ -15,18 +20,24 @@ public class Main {
 		 */
 		//addUser()のテスト(ユーザの追加)
 		//public static boolean addUser( String userId, String pw, String name )
-		//UserDBUtil.addUser("5401","name1","name1");
+		//UserDBUtil.addUser("5402","name2","name2");
 
 		//removeUser()のテスト(ユーザの削除)
 		//public static boolean removeUser( String userId ) {
 		/*
-		boolean result=UserDBUtil.removeUser("test");
+		boolean result=UserDBUtil.removeUser("5402");
 		System.out.print(result);
 		*/
 
 		//addPoint()のテスト(ユーザのポイント追加)
 		//public static boolean addPoint( String userId, int value ) {
 		//UserDBUtil.addPoint("pointtest",-10);
+		
+		//getAllUserID()
+		//public static String[] getAllUserID() {
+		String[] result=UserDBUtil.getAllUserID();
+		for (String UserID :result)
+		System.out.println(UserID);
 
 		/*
 		 * RequestDBUtil
@@ -63,7 +74,7 @@ public class Main {
 
 		//getRequest()のテスト(依頼の取得)
 		//public static RequestRecord getRequest( int requestId ) {
-
+		/*
 		RequestRecord result = RequestDBUtil.getRequest(10);
 		System.out.printf("requestID:%d\n",result.getRequestId());
 		System.out.printf("name:%s\n",result.getName());
@@ -77,7 +88,7 @@ public class Main {
 		System.out.printf("status:%d\n",result.getStatus());
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		System.out.printf("deadline:%s\n",sdFormat.format(result.getDeadline()));
-
+		*/
 
 		//setContractorID()のテスト(受注者の設定)
 		//public static boolean setContractorID( int requestId, String contractorID )
@@ -96,7 +107,7 @@ public class Main {
 		//getRequests()のテスト(依頼の取得(引数で返り値変化))
 		//public static Pair[] getRequests( String clientUserId, String contractorUserId, int status)
 		/*
-		Pair[] rezults=RequestDBUtil.getRequests("testUserIDs","pointtests",10);
+		Pair[] rezults=RequestDBUtil.getRequests("testUserID","pointtest",1);
 		for (Pair rezult: rezults){
 		      System.out.printf("%s,%s\n",rezult.first,rezult.second);
 		}
