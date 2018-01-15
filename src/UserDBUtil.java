@@ -118,6 +118,34 @@ public class UserDBUtil {
 
 		return true;	//ユーザ追加成功
 	}
+	/**
+	 * <p>全ユーザIDを返すメソッド</p>
+	 * @author 5415 土田 雄輝
+	 * @return 全ユーザIDが格納されたString配列、失敗した場合はnull
+	 */
+	
+	public static String[] getAllUserID() {
+		String[] userIDs;
+		int i=0;
+		String query = "SELECT UserID from Users";
+		try {
+			System.out.println(query);
+			ResultSet resultSet =SQLManager.userDBQuery(query);
+			resultSet.last();
+			int number_of_tables = resultSet.getRow();
+			resultSet.beforeFirst();
+			userIDs = new String[number_of_tables];
+			while(resultSet.next()){
+				userIDs[i]=resultSet.getString("UserID");
+				i++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return (userIDs);
+	}
+
 
 }
 

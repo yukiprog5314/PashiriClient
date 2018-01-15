@@ -32,6 +32,12 @@ public class Main {
 		//addPoint()のテスト(ユーザのポイント追加)
 		//public static boolean addPoint( String userId, int value ) {
 		//UserDBUtil.addPoint("pointtest",-10);
+		
+		//getAllUserID()
+		//public static String[] getAllUserID() {
+		String[] result=UserDBUtil.getAllUserID();
+		for (String UserID :result)
+		System.out.println(UserID);
 
 		/*
 		 * RequestDBUtil
